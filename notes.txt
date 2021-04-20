@@ -1,0 +1,41 @@
+install:
+gnome-tweak-tool
+arc-theme
+bashtop
+git
+docker
+docker-compose
+golang
+xclip
+python-is-python3
+tree
+jq
+fzf
+gron
+qbittorrent
+tmux
+k4dirstat
+nmap
+nordvpn
+net-tools
+universal-ctags
+nodejs
+vim (w/ clipboard support)
+burp suite
+discord
+telegram
+xmind
+vmware
+google chrome
+firefox
+thunderbird
+altair graphql client
+
+terminal:
+from https://github.com/Mayccoll/Gogh install the 'Azu' theme
+use fira code regular font (need to download)
+set font size to 11
+
+docker containers:
+https://github.com/hoppscotch/hoppscotch
+https://github.com/Joentje/nordvpn-proxy

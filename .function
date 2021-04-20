@@ -1,0 +1,43 @@
+function myip() {
+    dig +short myip.opendns.com @resolver1.opendns.com
+}
+
+function ipinfo(){
+    curl http://ipinfo.io/$1
+}
+
+function toggle-git-key() {
+	git config --global url."https://NULLHE4D:$GITHUB_TOKEN@github.com/".insteadOf "https://github.com/"
+}
+
+function youtube-dl-best() {
+    youtube-dl -f "bestvideo+bestaudio" --yes-playlist --download-archive downloaded.txt "$1"
+}
+
+function youtube-dl-720() {
+    youtube-dl -f "bestvideo[height=720]+bestaudio" --yes-playlist --download-archive downloaded.txt "$1"
+}
+
+function myproxy() {
+    mitmproxy --listen-host 127.0.0.1 --listen-port 8080 -k
+}
+
+function burp-import() {
+    cat $1 | httpx -silent -H "User-Agent: $USER_AGENT" -http-proxy http://127.0.0.1:8080
+}
+
+function burp-import2() {
+    cat $1 | awk '{print $2}' | httpx -silent -H "User-Agent: $USER_AGENT" -http-proxy http://127.0.0.1:8080
+}
+
+function myctags() {
+    ctags -R -a --exclude=node_modules .
+}
+
+function staticext() {
+    echo "png,jpg,jpeg,gif,ico,woff,woff2,ttf,js,css" | xclip -selection clipboard
+}
+
+function staticext2() {
+    echo "\.(png|jpg|jpeg|gif|ico|woff|woff2|ttf|js|css)($|\?)" | xclip -selection clipboard
+}
