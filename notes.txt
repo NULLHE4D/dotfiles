@@ -21,6 +21,7 @@ net-tools
 universal-ctags
 nodejs
 vim (w/ clipboard support)
+restic
 burp suite
 discord
 telegram
