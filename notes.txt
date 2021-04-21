@@ -21,6 +21,7 @@ nordvpn
 net-tools
 universal-ctags
 nodejs
+proxychains4
 vim (w/ clipboard support)
 restic
 burp suite
