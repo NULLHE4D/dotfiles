@@ -103,3 +103,11 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " show hidden files in NERDTree
 let NERDTreeShowHidden=1
+
+
+" ------ UltiSnips ----------------------------------------------------------
+
+let g:UltiSnipsListSnippets="<C-l>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"

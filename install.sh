@@ -11,5 +11,3 @@ ln -sfv ~/.dotfiles/proxychains4.conf /etc/proxychains4.conf
 ln -sfv ~/.dotfiles/.tmux.conf ~/.tmux.conf
 
 echo "done.."
-
-echo "don't forget to add 'filetype indent off' to ~/.vim/autoload/plug.vim"
