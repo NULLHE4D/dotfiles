@@ -8,3 +8,5 @@ alias mv="mv -i"
 
 # move to trash instead of permanently removing
 alias rm="gio trash"
+
+alias hfzf="history | fzf +s --tac"
