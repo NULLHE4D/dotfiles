@@ -1,5 +1,28 @@
 "source $VIMRUNTIME/defaults.vim
 
+" --- vim-plug ----------------------------------------------------------
+
+" automatically install vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+
+" in case i need vim help for vim-plug
+Plug 'junegunn/vim-plug'
+
+Plug 'preservim/nerdtree'
+Plug 'SirVer/ultisnips'
+
+call plug#end()
+
+
+
+" --- MISC --------------------------------------------------------------
+
 " idk what this does but i like it
 set nocompatible
 set autoindent expandtab tabstop=4 shiftwidth=4
@@ -41,7 +64,7 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 
 
-" ===== REMAPS =====
+" --- REMAPS ----------------------------------------------------------------
 
 " buffer switching
 let mapleader=";"
@@ -53,15 +76,15 @@ inoremap <C-f> <C-x><C-f>
 
 
 
-" ===== COMMANDS =====
+" --- COMMANDS --------------------------------------------------------------
 
 command! GenTags !ctags -R -a --exclude=node_modules .
 
 
 
-" ===== PLUGINS =====
+" --- PLUGINS ---------------------------------------------------------------
 
-" === netrw ===
+" ------ netrw --------------------------------------------------------------
 
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
@@ -69,7 +92,7 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 15
 
 
-" === NERDTree ===
+" ------ NERDTree -----------------------------------------------------------
 
 " Start NERDTree when Vim starts with a directory argument.
 autocmd StdinReadPre * let s:std_in=1
