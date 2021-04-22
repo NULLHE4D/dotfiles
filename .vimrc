@@ -5,6 +5,7 @@ set nocompatible
 set autoindent expandtab tabstop=4 shiftwidth=4
 set cursorline
 set number
+set relativenumber
 set backspace=indent,eol,start
 set autoread
 set showcmd
