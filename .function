@@ -29,3 +29,18 @@ function staticext() {
 function staticext2() {
     echo "\.(png|jpg|jpeg|gif|ico|woff|woff2|ttf|js|css)($|\?)" | xclip -selection clipboard
 }
+
+function url2filename {
+    echo $1 | sed -E 's/:\/\/|\.|:|\//_/g'
+}
+
+function krawl() { # expects URL as argument
+    filename=$(url2filename $1)
+    hakrawler -url $1 -headers "User-Agent: $USER_AGENT" -scope subs -nocolor -insecure -all \
+        -depth 3 -js -linkfinder -robots -sitemap -subs -forms -urls | tee $filename.krawl
+}
+
+function graburls() { # expects domain as argument
+    filename=$(url2filename $1)
+    gau -b eot,ttf,woff,woff2,svg,png,jpg,jpeg,gif,ico,css -random-agent -o $filename.gau $1
+}
