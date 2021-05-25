@@ -11,6 +11,10 @@ ln -sfv ~/.dotfiles/proxychains4.conf /etc/proxychains4.conf
 ln -sfv ~/.dotfiles/.tmux.conf ~/.tmux.conf
 ln -sfv ~/.dotfiles/graftcp-local.conf /etc/graftcp-local/graftcp-local.conf
 
+echo "creating directories.."
+mkdir -p ~/.vim/swp
+mkdir -p ~/.vim/undo
+
 echo "restarting services.."
 service graftcp-local restart
 
