@@ -12,3 +12,6 @@ alias rm="gio trash"
 alias xclip="xclip -selection clipboard"
 
 alias hfzf="history | fzf +s --tac"
+
+# disable line wrapping for base64
+alias base64="base64 -w 0"
