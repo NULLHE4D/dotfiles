@@ -49,6 +49,7 @@ set confirm
 set directory=$HOME/.vim/swp//
 set undofile
 set undodir=$HOME/.vim/undo
+set formatoptions=ql
 
 colorscheme default
 
@@ -61,6 +62,14 @@ au BufNewFile,BufRead *.ejs set filetype=html
 
 " configure correct indentation for YAML
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+" fix broken indentation on paste in tmux (see https://vi.stackexchange.com/questions/23110/pasting-text-on-vim-inside-tmux-breaks-indentation)
+if &term =~ "screen"
+    let &t_BE = "\e[?2004h"
+    let &t_BD = "\e[?2004l"
+    exec "set t_PS=\e[200~"
+    exec "set t_PE=\e[201~"
+endif
 
 
 
@@ -79,6 +88,9 @@ inoremap <C-f> <C-x><C-f>
 " --- COMMANDS --------------------------------------------------------------
 
 command! GenTags !ctags -R -a --exclude=node_modules .
+
+" refresh UltiSnips Snippets
+command! RefreshSnippets call UltiSnips#RefreshSnippets()
 
 
 
