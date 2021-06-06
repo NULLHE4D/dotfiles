@@ -50,6 +50,7 @@ set directory=$HOME/.vim/swp//
 set undofile
 set undodir=$HOME/.vim/undo
 set formatoptions=ql
+set noarabicshape
 
 colorscheme default
 
