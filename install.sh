@@ -15,6 +15,9 @@ echo "creating directories.."
 mkdir -p ~/.vim/swp
 mkdir -p ~/.vim/undo
 
+echo "copying files.."
+cp -r ~/.dotfiles/.vim/UltiSnips ~/.vim
+
 echo "restarting services.."
 service graftcp-local restart
 

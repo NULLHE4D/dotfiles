@@ -1,0 +1,52 @@
+snippet expressjs "template for expressjs server (main.js)" b 
+"use strict";
+
+const express = require("express"),
+    app = express(),
+    router = express.Router(),
+    morgan = require("morgan");
+
+
+// app config
+app.set("port", ${1:3000});
+app.set("view engine", "ejs");
+app.disable("x-powered-by");
+
+// remove if you won't be serving static content
+app.use(express.static("static", {
+    etag: true,
+    lastModified: false,
+    setHeaders: (res, path, stat) => {
+        res.setHeader("Cache-Control", "public, max-age=7200");
+    }
+}));
+app.use(
+    express.urlencoded({
+        extended: false
+    })
+);
+
+
+// middleware
+router.use(morgan("combined"));
+
+// routes
+//router.get("/", index);
+
+app.use("/", router);
+app.listen(app.get("port"), () => {
+    console.log(`app listening on port ${app.get("port")}...`);
+});
+endsnippet
+
+snippet mocha "create a mocha describe block" b 
+describe("${1:#myFunction()}", function() {
+
+	context("${2:without arguments}", function() {
+		it("${3:should return true}", function() {
+			$0
+		});
+	});
+
+});
+endsnippet
