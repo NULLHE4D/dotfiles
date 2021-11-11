@@ -9,7 +9,7 @@ alias mv="mv -i"
 # move to trash instead of permanently removing
 alias rm="gio trash"
 
-alias xclip="xclip -selection clipboard"
+alias xclip="xclip -selection clipboard -r"
 
 alias hfzf="history | fzf +s --tac"
 
