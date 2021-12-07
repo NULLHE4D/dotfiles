@@ -6,7 +6,7 @@ import socket, time
 ip = "${1:127.0.0.1}"
 port = ${2:1337}
 timeout = 5
-prefix = b"OVERFLOW1 "
+prefix = b"${3:OVERFLOW1 }"
 
 buffer = prefix + b"A" * 100
 
@@ -35,7 +35,7 @@ ip = "${1:127.0.0.1}"
 port = ${2:1337}
 timeout = 5
 
-prefix = b"OVERFLOW1 "
+prefix = b"${3:OVERFLOW1 }"
 offset = 0
 overflow = b"A" * offset
 retn = b""
