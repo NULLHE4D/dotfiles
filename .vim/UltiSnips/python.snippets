@@ -23,7 +23,7 @@ while True:
         print("Fuzzing (may have) crashed at {} bytes".format(len(buffer) - len(prefix)))
         exit()
     buffer += b"A" * 100
-    time.sleep(1)
+    time.sleep(3)
 endsnippet
 
 snippet bofexploit "remote BOF exploit template" b 
