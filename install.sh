@@ -14,6 +14,8 @@ ln -sfv ~/.dotfiles/graftcp-local.conf /etc/graftcp-local/graftcp-local.conf
 echo "creating directories.."
 mkdir -p ~/.vim/swp
 mkdir -p ~/.vim/undo
+mkdir -p ~/.vim/autoload
+mkdir -p ~/.vim/plugged
 
 echo "copying files.."
 cp -r ~/.dotfiles/.vim/UltiSnips ~/.vim
