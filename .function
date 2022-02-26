@@ -44,3 +44,9 @@ function graburls() { # expects domain as argument
     filename=$(url2filename $1)
     gau -b eot,ttf,woff,woff2,svg,png,jpg,jpeg,gif,ico,css -random-agent -o $filename.gau $1
 }
+
+# git commits recursive grep
+function gitgrep() {
+    pattern="$1"
+    { find .git/objects/pack/ -name "*.idx"|while read i;do git show-index < "$i"|awk '{print $2}';done;find .git/objects/ -type f|grep -v '/pack/'|awk -F'/' '{print $(NF-1)$NF}'; }|while read o;do git cat-file -p $o;done|grep -E "$pattern"
+}
