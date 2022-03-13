@@ -50,3 +50,25 @@ function gitgrep() {
     pattern="$1"
     { find .git/objects/pack/ -name "*.idx"|while read i;do git show-index < "$i"|awk '{print $2}';done;find .git/objects/ -type f|grep -v '/pack/'|awk -F'/' '{print $(NF-1)$NF}'; }|while read o;do git cat-file -p $o;done|grep -E "$pattern"
 }
+
+function tmux-hack() {
+
+    workdir="$1"
+
+    if [ -d "${workdir}/script" ] || [ -z "${workdir}" ]; then
+
+        workdir="$(realpath $workdir)"
+        cd "${workdir}"
+
+        tmux new-session -d -s hack
+        for i in {1..3}; do
+            tmux new-window \; \
+                send-keys "script ${workdir}/script/typescript-$(date "+%Y%m%d-%H%M")-${i}" C-m
+        done
+        tmux attach -t hack
+
+    else
+        echo "specify a valid directory dud"
+    fi
+
+}
