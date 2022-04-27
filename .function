@@ -72,3 +72,8 @@ function tmux-hack() {
     fi
 
 }
+
+function binlibs ()
+{
+    ldd $1 | grep --color=auto so | sed -e '/^[^\t]/ d' | sed -e 's/\t//' | sed -e 's/.*=..//' | sed -e 's/ (0.*)//' | sort | uniq -c | sort -n
+}
