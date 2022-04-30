@@ -121,10 +121,18 @@ fi
 sed -i '/github\.com/d' ~/.gitconfig
 
 # configure shell prompt
-function parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\x1B[32m\1\x1B[37m)/'
+function ps1_dings {
+    local __user_and_host="\[\033[1;37m\]\u\[\033[1;31m\]@\[\033[1;37m\]\h\[\033[1;31m\]"
+    local __cur_location=":\[\033[1;34m\]\w"
+    local __git_branch_color="\[\033[32m\]"
+    #local __git_branch="\`ruby -e \"print (%x{git branch 2> /dev/null}.grep(/^\*/).first || '').gsub(/^\* (.+)$/, '(\1) ')\"\`"
+    local __parentheses_color="\[\033[37m\]"
+    local __git_branch='`git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`'
+    local __prompt_tail="\[\033[37m\]$"
+    local __last_color="\[\033[00m\]"
+    export PS1="$__user_and_host$__cur_location $__git_branch_color$__git_branch$__prompt_tail$__last_color "
 }
-PS1='\[\033[1;37m\]\u\[\033[1;31m\]@\[\033[1;37m\]\h\[\033[1;31m\]:\[\033[1;34m\]\w\[\033[1;37m\]$(parse_git_branch)$\[\033[0m\] '
+ps1_dings
 
 # configure autocomplete
 bind TAB:menu-complete
