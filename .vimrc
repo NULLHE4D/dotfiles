@@ -16,6 +16,7 @@ Plug 'junegunn/vim-plug'
 
 Plug 'preservim/nerdtree'
 Plug 'SirVer/ultisnips'
+Plug 'MattesGroeger/vim-bookmarks'
 
 call plug#end()
 
@@ -124,3 +125,9 @@ let g:UltiSnipsListSnippets="<C-l>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+
+" ------ vim-bookmarks ------------------------------------------------------
+
+let g:bookmark_save_per_working_dir = 1
+let g:bookmark_display_annotation = 1
