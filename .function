@@ -77,3 +77,14 @@ function binlibs ()
 {
     ldd $1 | grep --color=auto so | sed -e '/^[^\t]/ d' | sed -e 's/\t//' | sed -e 's/.*=..//' | sed -e 's/ (0.*)//' | sort | uniq -c | sort -n
 }
+
+function git-partial-clone() {
+    git clone \
+      --depth 1  \
+      --filter=blob:none  \
+      --no-checkout \
+      $1;
+
+    # cd $1
+    # git checkout master -- dirname
+}
