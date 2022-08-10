@@ -129,5 +129,6 @@ let g:UltiSnipsEditSplit="vertical"
 
 " ------ vim-bookmarks ------------------------------------------------------
 
+let g:bookmark_annotation_sign = '⚑'
 let g:bookmark_save_per_working_dir = 1
 let g:bookmark_display_annotation = 1
