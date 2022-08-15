@@ -88,3 +88,20 @@ function git-partial-clone() {
     # cd $1
     # git checkout master -- dirname
 }
+
+function explode-layers() {(
+    set -e
+    image_name="$1"
+    sudo docker image save $image_name > image.tar
+    mkdir image && mv image.tar image
+    cd image
+    tar -xf image.tar
+
+    while read line; do
+        cd $line
+        mkdir layer && mv layer.tar layer
+        cd layer
+        tar -xf layer.tar
+        cd ../../
+    done <<< $(ls | grep -E '^[0-9a-f]{64}$')
+)}
