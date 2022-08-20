@@ -34,6 +34,10 @@ function url2filename {
     echo $1 | sed -E 's/:\/\/|\.|:|\//_/g'
 }
 
+function titled-separator() {
+    python -c "title = '${1}'; print('--- {0} {1}'.format(title, ('-'*(66-len(title)))))"
+}
+
 function krawl() { # expects URL as argument
     filename=$(url2filename $1)
     hakrawler -url $1 -headers "User-Agent: $USER_AGENT" -scope subs -nocolor -insecure -all \
