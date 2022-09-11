@@ -109,3 +109,12 @@ function explode-layers() {(
         cd ../../
     done <<< $(ls | grep -E '^[0-9a-f]{64}$')
 )}
+
+function related-words() {
+    term="$1"
+    while read line; do
+        for word in $(echo $line); do
+            echo $word
+        done
+    done <<< $(curl "https://relatedwords.org/api/related?term=${term}" | jq '.[] | .word' | sed 's/"//g')
+}
