@@ -19,3 +19,5 @@ alias hfzf="history | fzf +s --tac"
 alias base64="base64 -w 0"
 
 alias diff="colordiff"
+
+alias wget-mirror="wget -k -p -r"
