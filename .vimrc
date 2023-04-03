@@ -53,6 +53,8 @@ set undodir=$HOME/.vim/undo
 set formatoptions=ql
 set noarabicshape
 
+set pastetoggle=<F1>
+
 colorscheme default
 
 " fuzzy finding
