@@ -22,6 +22,7 @@ cp -r ~/.dotfiles/.vim/UltiSnips ~/.vim
 echo "doing other stuff.."
 cat ~/.dotfiles/.bashrc >> ~/.bashrc
 cat ~/.dotfiles/init.vim >> ~/.config/nvim/init.vim
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 echo "restarting services.."
 #service graftcp-local restart
